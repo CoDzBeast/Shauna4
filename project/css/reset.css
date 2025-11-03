@@ -1,0 +1,30 @@
+/* CSS Reset: normalize base styles across browsers */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
