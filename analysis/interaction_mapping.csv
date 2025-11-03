@@ -1,0 +1,8 @@
+component,trigger,behavior,notes
+Header burger button,Click,Toggles overlay navigation menu,Button element marked with data-animation-role=header-element and data-test=header-burger
+Overlay navigation close button,Click,Closes the full-screen overlay menu,Close control defined by data-test=overlay-nav-close
+Primary CTA buttons ("ORDER"),Hover,Applies Squarespace primary button hover state (color + underline per theme),Data attributes show data-animation-role=button implying animated transitions
+Hero "ORDER" button,Click,Navigates to the online ordering flow (Squarespace commerce link),Anchor has href to /order-online and data-click-event tracking attributes
+"This Week's Cookies" button,Click,Smooth-scrolls to weekly menu section via anchor target,Anchor uses in-page hash #weekly-menu (observed in href attribute)
+Instagram reel embeds,Scroll/Play,Lazy-loads embedded Instagram reels and allows playback inside iframe,Multiple iframe src values referencing instagram.com/reel/*/embed
+Sticky header,Scroll,Header transitions from transparent to solid background per style variables,Inline style uses CSS vars --headerBorderColor and --solidHeaderBackgroundColor indicating scroll-driven change
