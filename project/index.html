@@ -61,7 +61,7 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary">
-        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-js="nav-toggle">
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-js="nav-toggle" aria-label="Toggle site navigation">
           <span class="site-nav__toggle-label">Menu</span>
           <span class="site-nav__toggle-icon" aria-hidden="true">
             <span></span>
@@ -86,8 +86,8 @@
 
   <main id="main-content">
     <section class="hero" id="hero" data-section-id="6033d4b8593810664e4e1967">
-      <div class="hero__inner container">
-        <div class="hero__content">
+      <div class="hero__inner container" data-animate>
+        <div class="hero__content" data-animate>
           <p class="hero__eyebrow">We’re Honeybear Bake Shop.</p>
           <h1 class="hero__title">An online cookie boutique serving Charlotte, NC.</h1>
           <p class="hero__description">We specialize in decadent weekly cookie boxes, bars, and donuts crafted with playful flavors and a lot of heart.</p>
@@ -105,15 +105,15 @@
             </li>
           </ul>
         </div>
-        <figure class="hero__media">
+        <figure class="hero__media" data-animate>
           <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png" alt="Assorted Honeybear Bake Shop cookies in a box" loading="lazy">
         </figure>
       </div>
     </section>
 
     <section class="order-guide section" id="order" data-section-id="60352fdc0e32566d34936e71">
-      <div class="section__inner container">
-        <div class="section__header">
+      <div class="section__inner container" data-animate>
+        <div class="section__header" data-animate>
           <h2 class="section__title">How To Order</h2>
           <p class="section__description">Learn how to snag a box, discover pickup options, and get answers to our most frequently asked questions.</p>
         </div>
@@ -122,43 +122,56 @@
     </section>
 
     <section class="testimonials section" id="testimonials" data-section-id="60356307a58f2e29e05d3067">
-      <div class="section__inner container">
-        <div class="section__header">
+      <div class="section__inner container" data-animate>
+        <div class="section__header" data-animate>
           <h2 class="section__title">Sweet Words from the Cookie Monsters</h2>
           <p class="section__description">Our community says it best—these treats are worth the wait each week.</p>
         </div>
-        <div class="testimonials__grid">
-          <article class="testimonial">
-            <blockquote class="testimonial__quote">
-              <p>The BEST cookies I’ve had in Charlotte. Hannah is such a sweetheart and is so creative with her cookies and other sweet treats. Must try the Cookie Monster rolls! And that S’mores cookie is to die for.</p>
-            </blockquote>
-            <cite class="testimonial__author">— Desirae Negron</cite>
-          </article>
-          <article class="testimonial">
-            <blockquote class="testimonial__quote">
-              <p>Hands down, best tasting creative cookie shop! Not the normal basic sugar cookie—each box is a work of art filled with brownies, bars, and cookie-filled donuts. Her mind has no boundaries.</p>
-            </blockquote>
-            <cite class="testimonial__author">— Britney Greenwood</cite>
-          </article>
-          <article class="testimonial">
-            <blockquote class="testimonial__quote">
-              <p>Best cookies in all of Charlotte! Chef Hannah creates unique cookie ideas that are beyond delicious. Do yourself a favor and check them out—you won’t regret it.</p>
-            </blockquote>
-            <cite class="testimonial__author">— Sarah Werner</cite>
-          </article>
-          <article class="testimonial">
-            <blockquote class="testimonial__quote">
-              <p>Chef Hannah is the most talented pastry chef in Charlotte. She offers nearly 40 flavors and continues to innovate weekly. The confetti cookie donut and chocolate chip cookie donuts are game changers.</p>
-            </blockquote>
-            <cite class="testimonial__author">— Lindsey Jackson</cite>
-          </article>
+        <div class="carousel" data-js="carousel" data-animate>
+          <div class="carousel__viewport" data-js="carousel-viewport">
+            <div class="carousel__track" data-js="carousel-track">
+              <article class="testimonial" data-js="carousel-slide">
+                <blockquote class="testimonial__quote">
+                  <p>The BEST cookies I’ve had in Charlotte. Hannah is such a sweetheart and is so creative with her cookies and other sweet treats. Must try the Cookie Monster rolls! And that S’mores cookie is to die for.</p>
+                </blockquote>
+                <cite class="testimonial__author">— Desirae Negron</cite>
+              </article>
+              <article class="testimonial" data-js="carousel-slide">
+                <blockquote class="testimonial__quote">
+                  <p>Hands down, best tasting creative cookie shop! Not the normal basic sugar cookie—each box is a work of art filled with brownies, bars, and cookie-filled donuts. Her mind has no boundaries.</p>
+                </blockquote>
+                <cite class="testimonial__author">— Britney Greenwood</cite>
+              </article>
+              <article class="testimonial" data-js="carousel-slide">
+                <blockquote class="testimonial__quote">
+                  <p>Best cookies in all of Charlotte! Chef Hannah creates unique cookie ideas that are beyond delicious. Do yourself a favor and check them out—you won’t regret it.</p>
+                </blockquote>
+                <cite class="testimonial__author">— Sarah Werner</cite>
+              </article>
+              <article class="testimonial" data-js="carousel-slide">
+                <blockquote class="testimonial__quote">
+                  <p>Chef Hannah is the most talented pastry chef in Charlotte. She offers nearly 40 flavors and continues to innovate weekly. The confetti cookie donut and chocolate chip cookie donuts are game changers.</p>
+                </blockquote>
+                <cite class="testimonial__author">— Lindsey Jackson</cite>
+              </article>
+            </div>
+          </div>
+          <div class="carousel__controls">
+            <button class="carousel__button carousel__button--prev" type="button" data-js="carousel-prev" aria-label="Show previous testimonial">
+              <span aria-hidden="true">&#8592;</span>
+            </button>
+            <button class="carousel__button carousel__button--next" type="button" data-js="carousel-next" aria-label="Show next testimonial">
+              <span aria-hidden="true">&#8594;</span>
+            </button>
+          </div>
+          <div class="carousel__dots" role="tablist" aria-label="Testimonials" data-js="carousel-dots"></div>
         </div>
       </div>
     </section>
 
     <section class="press section" id="press" data-section-id="60342253d45dfd7037861f0c">
-      <div class="section__inner container">
-        <div class="section__header">
+      <div class="section__inner container" data-animate>
+        <div class="section__header" data-animate>
           <h2 class="section__title">Honeybear in the News</h2>
           <p class="section__description">We’re honored to be featured by our favorite publications and local storytellers.</p>
         </div>
@@ -188,8 +201,8 @@
     </section>
 
     <section class="events section" id="events" data-section-id="603421ff9fbb0f7c39047427">
-      <div class="section__inner container">
-        <div class="section__header">
+      <div class="section__inner container" data-animate>
+        <div class="section__header" data-animate>
           <h2 class="section__title">Upcoming Events</h2>
           <p class="section__description">For the latest pop-ups, bake sales, and limited-edition drops, we share all the sweet details on Instagram.</p>
         </div>
@@ -198,12 +211,12 @@
     </section>
 
     <section class="about section" id="about" data-section-id="603592602fc0de71abda9217">
-      <div class="section__inner container about__inner">
-        <figure class="about__media">
+      <div class="section__inner container about__inner" data-animate>
+        <figure class="about__media" data-animate>
           <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662230237025-WGF1CIYFAF0ZZSIUDN9C/image-asset.jpeg" alt="Hannah Neikirk holding a tray of fresh Honeybear cookies" loading="lazy">
           <figcaption class="about__credit">Photo by: Justin Driscoll</figcaption>
         </figure>
-        <div class="about__content">
+        <div class="about__content" data-animate>
           <h2 class="section__title">Meet Hannah</h2>
           <p class="section__description">Hi! I’m Hannah—owner and pastry chef at Honeybear Bake Shop. I’ve dreamt about pastry life since sprinting home from elementary school to catch my favorite show, <em>Sweet Dreams with Gale Gand</em>.</p>
           <p class="section__description">Inspired by my mom’s own cookie business, I spent late nights baking alongside my parents and refining recipes that taste like nostalgia with a modern twist.</p>
@@ -213,8 +226,8 @@
     </section>
 
     <section class="instagram section" id="instagram" data-section-id="6036cc9b1b7f2e41dd11c9f7">
-      <div class="section__inner container">
-        <div class="section__header">
+      <div class="section__inner container" data-animate>
+        <div class="section__header" data-animate>
           <h2 class="section__title">Follow us on Instagram</h2>
           <p class="section__description">@honeybearbakeshop shares behind-the-scenes bakes, pop-up announcements, and plenty of cookie close-ups.</p>
         </div>
@@ -252,11 +265,52 @@
         </ul>
       </div>
     </section>
+
+    <section class="contact section" id="contact" data-animate>
+      <div class="section__inner container" data-animate>
+        <div class="section__header" data-animate>
+          <h2 class="section__title">Drop Us a Line</h2>
+          <p class="section__description">Planning a celebration or craving a custom cookie creation? Send a note and we’ll be in touch faster than you can say “sprinkles.”</p>
+        </div>
+        <form class="form" data-js="contact-form" data-animate novalidate>
+          <div class="form__field" data-field="name">
+            <label class="form__label" for="contact-name">Name</label>
+            <input class="form__input" type="text" id="contact-name" name="name" autocomplete="name" required>
+            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+          </div>
+          <div class="form__field" data-field="email">
+            <label class="form__label" for="contact-email">Email</label>
+            <input class="form__input" type="email" id="contact-email" name="email" autocomplete="email" required>
+            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+          </div>
+          <div class="form__field" data-field="interest">
+            <label class="form__label" for="contact-interest">What can we bake for you?</label>
+            <select class="form__input form__input--select" id="contact-interest" name="interest" required>
+              <option value="">Select an option</option>
+              <option value="weekly-box">Weekly Cookie Box</option>
+              <option value="custom-order">Custom Order</option>
+              <option value="event-catering">Event Catering</option>
+              <option value="corporate-gifts">Corporate Gifts</option>
+            </select>
+            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+          </div>
+          <div class="form__field" data-field="message">
+            <label class="form__label" for="contact-message">Message</label>
+            <textarea class="form__input form__input--textarea" id="contact-message" name="message" rows="4" required></textarea>
+            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+          </div>
+          <div class="form__actions">
+            <button class="button button--primary" type="submit" data-js="form-submit">Send Message</button>
+            <p class="form__status" data-js="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer" id="footer" data-section-id="606600cc0b52ab02c0e7a94f">
-    <div class="site-footer__inner container">
-      <div class="site-footer__brand">
+  <footer class="site-footer" id="footer" data-section-id="606600cc0b52ab02c0e7a94f" data-animate>
+    <div class="site-footer__inner container" data-animate>
+      <div class="site-footer__brand" data-animate>
         <img class="site-footer__logo" src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617123194747-SXRHMXP2EJFEWD9T0OOX/logo2-1+copy.png" alt="Honeybear Bake Shop secondary logo">
         <p class="site-footer__tagline">Honeybear Bakeshop — Charlotte’s Best Cookies</p>
         <address class="site-footer__address">
@@ -293,7 +347,7 @@
       </div>
     </div>
     <div class="site-footer__legal">
-      <div class="container site-footer__legal-inner">
+      <div class="container site-footer__legal-inner" data-animate>
         <p class="site-footer__credits">Site design by Summerside Creative Studio &middot; Photography by Hannah Neikirk, Justin Driscoll &amp; Rico Marcelo Photography</p>
         <p class="site-footer__copyright">&copy; <span data-js="year"></span> Honeybear Bake Shop. All rights reserved.</p>
       </div>
