@@ -42,6 +42,15 @@
   <link rel="stylesheet" href="./css/global.min.css">
   <noscript><link rel="stylesheet" href="./css/global.css"></noscript>
 
+  <link rel="preload"
+        as="image"
+        href="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=1200w"
+        imagesrcset="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=800w 800w,
+                    https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=1200w 1200w,
+                    https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=1600w 1600w"
+        imagesizes="(min-width: 90rem) 640px, (min-width: 64rem) 50vw, (min-width: 48rem) 55vw, 90vw"
+        crossorigin>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -321,7 +330,7 @@
           </div>
           <div class="form__actions">
             <button class="button button--primary" type="submit" data-js="form-submit">Send Message</button>
-            <p class="form__status" data-js="form-status" role="status" aria-live="polite" hidden></p>
+            <p class="form__status" data-js="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
           </div>
         </form>
       </div>

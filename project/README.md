@@ -1,6 +1,12 @@
 # Honeybear Bake Shop Front-End Project
 
-This repository provides the base project structure and tooling checklist for the Honeybear Bake Shop website. Use it as the starting point for feature development and design implementation.
+This repository provides the production-ready front-end for the Honeybear Bake Shop website. Use it as the starting point for feature development, quality assurance, and deployment.
+
+## 0. Quick Links
+
+- [Visual Style Guide](./STYLEGUIDE.md)
+- [JavaScript Function Reference](./js/README.md)
+- [Deployment Playbook](./docs/DEPLOYMENT.md)
 
 ## 1. Project Structure
 
@@ -28,29 +34,52 @@ project/
 - **assets/**: static files separated into `images/`, `fonts/`, and `icons/`.
 - **README.md**: documentation for project setup and workflow.
 
-## 2. Development Environment
+## 2. Getting Started
 
-Follow these steps to ensure a smooth development workflow:
+### Prerequisites
 
-1. **Set up live reload**
-   - Use a lightweight server with hot reload, such as the [Live Server VS Code extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) or [Browsersync](https://browsersync.io/).
-   - Configure it to serve the `project/` directory so `index.html` updates automatically when files change.
+- [Node.js 18+](https://nodejs.org/) (optional) for running linting/minification scripts.
+- A local web server (recommended: [Live Server VS Code extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)).
+- Chrome DevTools (or similar) for responsive design mode, Lighthouse, and network inspections.
 
-2. **Configure version control**
-   - Initialize Git inside the repository (already configured in this project).
-   - Create feature branches for new work and make frequent commits with descriptive messages.
-   - Use `.gitkeep` placeholders to track otherwise-empty directories.
+### Running Locally
 
-3. **Install measurement tools**
-   - Add the [PerfectPixel Chrome extension](https://www.welldonecode.com/perfectpixel/) to overlay design comps on the implementation for pixel-perfect alignment.
+1. Clone the repository and `cd` into `project/`.
+2. Start a static server (e.g., via Live Server or `npx http-server`).
+3. Navigate to the served `index.html` in your browser.
+4. Make edits inside `css/` or `js/` and refresh to verify changes. `js/main.min.js` should be regenerated with `npx terser js/main.js -o js/main.min.js` after modifying the source file.
 
-4. **Set up testing across browsers**
-   - Test the site in current versions of Chrome, Firefox, Safari, and Edge.
-   - Use browser-specific dev tools to confirm layout consistency and responsive behavior.
-   - Document any browser-specific fixes in pull requests.
+### Recommended Extensions & Tools
 
-## 3. Next Steps
+- **Visual QA**: PerfectPixel overlay, WhatFont, ColorZilla.
+- **Layout Helpers**: CSS Grid/Flexbox generators.
+- **Formatting**: Prettier, EditorConfig, stylelint (optional).
 
-- Populate `css/components/` and `js/components/` with component-specific logic as new features are added.
-- Replace placeholder assets with production-ready images, fonts, and icons.
-- Update this README with additional tooling or workflow notes as the project evolves.
+## 3. Quality Assurance Checklist
+
+Use this checklist before every release to satisfy the QA requirements from the project brief.
+
+1. **Links** – Verify all internal anchors and external links resolve correctly.
+2. **Forms** – Submit the contact form with valid/invalid values to confirm validation, status messages, and reset behavior.
+3. **Animations** – Scroll through the page ensuring `[data-animate]` elements receive the `is-visible` class; confirm motion is disabled when `prefers-reduced-motion` is active.
+4. **Console** – Inspect DevTools for warnings or errors (expect a single informational log message).
+5. **Responsive Layout** – Test at 320px, 768px, 1024px, and 1440px widths. Pay special attention to navigation, carousel layouts, and typography scaling.
+6. **Performance** – Run [Lighthouse](https://developers.google.com/web/tools/lighthouse) or WebPageTest. Aim for <3s Largest Contentful Paint on a Fast 3G profile. Use the hero image preload (configured in `index.html`) and defer non-critical scripts to stay within budget.
+
+Document findings (including screenshots, browser/version, and steps) in pull requests or QA reports.
+
+## 4. Documentation
+
+- **Style Guide** – Shared colors, typography, and spacing conventions live in [`STYLEGUIDE.md`](./STYLEGUIDE.md).
+- **JavaScript Reference** – Data attributes, validation rules, and carousel logic are described in [`js/README.md`](./js/README.md).
+- **Accessibility** – Follow the checklist in the style guide and keep aria attributes synchronized with interactive state (see `js/main.js`).
+
+## 5. Deployment
+
+Deployment instructions for Netlify, Vercel, and GitHub Pages—including custom domain, SSL, and analytics configuration—are documented in [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
+
+## 6. Maintenance Notes
+
+- Populate `css/components/` and `js/components/` with modular files as the project grows.
+- Replace remote image URLs with locally hosted assets before going live to eliminate third-party dependencies.
+- Update the documentation links above whenever you add new tooling or workflow guidance.
