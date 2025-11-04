@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Honeybear Bake Shop</title>
   <meta name="description" content="Buy Cookies Online Charlotte NC - Cookie Boxes, Bars & Donuts">
+  <meta name="theme-color" content="#fffaf4">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:site_name" content="Honeybear Bake Shop">
@@ -28,9 +32,15 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.squarespace-cdn.com" crossorigin>
+  <link rel="preconnect" href="https://static1.squarespace.com" crossorigin>
+  <link rel="dns-prefetch" href="//images.squarespace-cdn.com">
+  <link rel="dns-prefetch" href="//static1.squarespace.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/global.css">
+  <link rel="preload" href="./css/global.min.css" as="style">
+  <link rel="stylesheet" href="./css/global.min.css">
+  <noscript><link rel="stylesheet" href="./css/global.css"></noscript>
 
   <script type="application/ld+json">
   {
@@ -57,7 +67,7 @@
   <header class="site-header" data-section-id="header">
     <div class="site-header__inner container">
       <a class="site-header__brand" href="https://www.honeybearbakeshop.com" aria-label="Honeybear Bake Shop home">
-        <img class="site-header__logo" src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617122657638-7CZVQHB2CQXDT2OX8OH7/logo.png" alt="Honeybear Bake Shop">
+        <img class="site-header__logo" src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617122657638-7CZVQHB2CQXDT2OX8OH7/logo.png" alt="Honeybear Bake Shop" decoding="async" fetchpriority="high">
       </a>
 
       <nav class="site-nav" aria-label="Primary">
@@ -69,7 +79,7 @@
             <span></span>
           </span>
         </button>
-        <div class="site-nav__overlay" data-js="nav-overlay"></div>
+        <div class="site-nav__overlay" data-js="nav-overlay" aria-hidden="true"></div>
         <div class="site-nav__menu" id="primary-navigation" data-js="nav-menu">
           <ul class="site-nav__list">
             <li class="site-nav__item"><a class="site-nav__link" href="#about">About Us</a></li>
@@ -98,15 +108,20 @@
           <p class="hero__accolade">“Voted Best Cookies in Charlotte” — 2022 &amp; 2021 Charlotte Magazine BOB Winner</p>
           <ul class="hero__badges" aria-label="Awards">
             <li class="hero__badge">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/0b2967b6-1a92-4020-8de8-1f56502ebcbe/2022-bobs-winner.png" alt="2022 Charlotte Magazine BOB Winner">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/0b2967b6-1a92-4020-8de8-1f56502ebcbe/2022-bobs-winner.png?format=400w" alt="2022 Charlotte Magazine BOB Winner" loading="lazy" decoding="async" width="120" height="120">
             </li>
             <li class="hero__badge">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1618520583308-AQMQDNPGR2OTK83VAD9I/2021-bobs-winner.png" alt="2021 Charlotte Magazine BOB Winner">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1618520583308-AQMQDNPGR2OTK83VAD9I/2021-bobs-winner.png?format=400w" alt="2021 Charlotte Magazine BOB Winner" loading="lazy" decoding="async" width="120" height="120">
             </li>
           </ul>
         </div>
         <figure class="hero__media" data-animate>
-          <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png" alt="Assorted Honeybear Bake Shop cookies in a box" loading="lazy">
+          <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=1200w"
+               srcset="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=800w 800w,
+                       https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=1200w 1200w,
+                       https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617307698607-YR4BW3B4UN54S5UI1U7F/Edited_Home%2821%29.png?format=1600w 1600w"
+               sizes="(min-width: 90rem) 640px, (min-width: 64rem) 50vw, (min-width: 48rem) 55vw, 90vw"
+               alt="Assorted Honeybear Bake Shop cookies in a box" loading="eager" decoding="async" fetchpriority="high" width="1200" height="960">
         </figure>
       </div>
     </section>
@@ -213,7 +228,12 @@
     <section class="about section" id="about" data-section-id="603592602fc0de71abda9217">
       <div class="section__inner container about__inner" data-animate>
         <figure class="about__media" data-animate>
-          <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662230237025-WGF1CIYFAF0ZZSIUDN9C/image-asset.jpeg" alt="Hannah Neikirk holding a tray of fresh Honeybear cookies" loading="lazy">
+          <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662230237025-WGF1CIYFAF0ZZSIUDN9C/image-asset.jpeg?format=900w"
+               srcset="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662230237025-WGF1CIYFAF0ZZSIUDN9C/image-asset.jpeg?format=600w 600w,
+                       https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662230237025-WGF1CIYFAF0ZZSIUDN9C/image-asset.jpeg?format=900w 900w,
+                       https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662230237025-WGF1CIYFAF0ZZSIUDN9C/image-asset.jpeg?format=1200w 1200w"
+               sizes="(min-width: 64rem) 40vw, (min-width: 48rem) 45vw, 90vw"
+               alt="Hannah Neikirk holding a tray of fresh Honeybear cookies" loading="lazy" decoding="async" width="900" height="1125">
           <figcaption class="about__credit">Photo by: Justin Driscoll</figcaption>
         </figure>
         <div class="about__content" data-animate>
@@ -234,32 +254,32 @@
         <ul class="instagram__grid" aria-label="Latest Instagram posts">
           <li class="instagram__item">
             <a class="instagram__link" href="https://www.instagram.com/honeybearbakeshop" target="_blank" rel="noreferrer">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305381378-22B2ZKV3TSZJXN2JYEWU/image-asset.png" alt="Cookie box with colorful sprinkles" loading="lazy">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305381378-22B2ZKV3TSZJXN2JYEWU/image-asset.png?format=600w" alt="Cookie box with colorful sprinkles" loading="lazy" decoding="async" width="400" height="400">
             </a>
           </li>
           <li class="instagram__item">
             <a class="instagram__link" href="https://www.instagram.com/honeybearbakeshop" target="_blank" rel="noreferrer">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305382077-YOV9G9HWT27IVUWPGTOO/image-asset.png" alt="A close-up of cookies topped with marshmallows" loading="lazy">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305382077-YOV9G9HWT27IVUWPGTOO/image-asset.png?format=600w" alt="A close-up of cookies topped with marshmallows" loading="lazy" decoding="async" width="400" height="400">
             </a>
           </li>
           <li class="instagram__item">
             <a class="instagram__link" href="https://www.instagram.com/honeybearbakeshop" target="_blank" rel="noreferrer">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662566049857-6AUZ1D73YYQIOPH4MOLV/image-asset.jpeg" alt="Freshly baked cookie donuts on a tray" loading="lazy">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662566049857-6AUZ1D73YYQIOPH4MOLV/image-asset.jpeg?format=600w" alt="Freshly baked cookie donuts on a tray" loading="lazy" decoding="async" width="400" height="400">
             </a>
           </li>
           <li class="instagram__item">
             <a class="instagram__link" href="https://www.instagram.com/honeybearbakeshop" target="_blank" rel="noreferrer">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305384614-6A34V4LKSERXEVGEQVI3/image-asset.png" alt="Cookie sandwich with colorful sprinkles" loading="lazy">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305384614-6A34V4LKSERXEVGEQVI3/image-asset.png?format=600w" alt="Cookie sandwich with colorful sprinkles" loading="lazy" decoding="async" width="400" height="400">
             </a>
           </li>
           <li class="instagram__item">
             <a class="instagram__link" href="https://www.instagram.com/honeybearbakeshop" target="_blank" rel="noreferrer">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662417010025-XVOHROG6TQK24S1X1L5N/image-asset.jpeg" alt="Cookie boxes stacked for pickup" loading="lazy">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1662417010025-XVOHROG6TQK24S1X1L5N/image-asset.jpeg?format=600w" alt="Cookie boxes stacked for pickup" loading="lazy" decoding="async" width="400" height="400">
             </a>
           </li>
           <li class="instagram__item">
             <a class="instagram__link" href="https://www.instagram.com/honeybearbakeshop" target="_blank" rel="noreferrer">
-              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305385693-1749ZQUJZ5TIS9ZU50SF/image-asset.png" alt="A frosted cookie cake topped with sprinkles" loading="lazy">
+              <img src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617305385693-1749ZQUJZ5TIS9ZU50SF/image-asset.png?format=600w" alt="A frosted cookie cake topped with sprinkles" loading="lazy" decoding="async" width="400" height="400">
             </a>
           </li>
         </ul>
@@ -275,33 +295,33 @@
         <form class="form" data-js="contact-form" data-animate novalidate>
           <div class="form__field" data-field="name">
             <label class="form__label" for="contact-name">Name</label>
-            <input class="form__input" type="text" id="contact-name" name="name" autocomplete="name" required>
-            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+            <input class="form__input" type="text" id="contact-name" name="name" autocomplete="name" aria-describedby="contact-name-error" required>
+            <p class="form__error" id="contact-name-error" data-js="field-error" aria-live="polite" hidden></p>
           </div>
           <div class="form__field" data-field="email">
             <label class="form__label" for="contact-email">Email</label>
-            <input class="form__input" type="email" id="contact-email" name="email" autocomplete="email" required>
-            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+            <input class="form__input" type="email" id="contact-email" name="email" autocomplete="email" aria-describedby="contact-email-error" required>
+            <p class="form__error" id="contact-email-error" data-js="field-error" aria-live="polite" hidden></p>
           </div>
           <div class="form__field" data-field="interest">
             <label class="form__label" for="contact-interest">What can we bake for you?</label>
-            <select class="form__input form__input--select" id="contact-interest" name="interest" required>
+            <select class="form__input form__input--select" id="contact-interest" name="interest" aria-describedby="contact-interest-error" required>
               <option value="">Select an option</option>
               <option value="weekly-box">Weekly Cookie Box</option>
               <option value="custom-order">Custom Order</option>
               <option value="event-catering">Event Catering</option>
               <option value="corporate-gifts">Corporate Gifts</option>
             </select>
-            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+            <p class="form__error" id="contact-interest-error" data-js="field-error" aria-live="polite" hidden></p>
           </div>
           <div class="form__field" data-field="message">
             <label class="form__label" for="contact-message">Message</label>
-            <textarea class="form__input form__input--textarea" id="contact-message" name="message" rows="4" required></textarea>
-            <p class="form__error" data-js="field-error" aria-live="polite"></p>
+            <textarea class="form__input form__input--textarea" id="contact-message" name="message" rows="4" aria-describedby="contact-message-error" required></textarea>
+            <p class="form__error" id="contact-message-error" data-js="field-error" aria-live="polite" hidden></p>
           </div>
           <div class="form__actions">
             <button class="button button--primary" type="submit" data-js="form-submit">Send Message</button>
-            <p class="form__status" data-js="form-status" role="status" aria-live="polite"></p>
+            <p class="form__status" data-js="form-status" role="status" aria-live="polite" hidden></p>
           </div>
         </form>
       </div>
@@ -311,7 +331,7 @@
   <footer class="site-footer" id="footer" data-section-id="606600cc0b52ab02c0e7a94f" data-animate>
     <div class="site-footer__inner container" data-animate>
       <div class="site-footer__brand" data-animate>
-        <img class="site-footer__logo" src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617123194747-SXRHMXP2EJFEWD9T0OOX/logo2-1+copy.png" alt="Honeybear Bake Shop secondary logo">
+        <img class="site-footer__logo" src="https://images.squarespace-cdn.com/content/v1/5f1caf53a5716e4f31e19766/1617123194747-SXRHMXP2EJFEWD9T0OOX/logo2-1+copy.png" alt="Honeybear Bake Shop secondary logo" loading="lazy" decoding="async" width="160" height="80">
         <p class="site-footer__tagline">Honeybear Bakeshop — Charlotte’s Best Cookies</p>
         <address class="site-footer__address">
           Order Pick Ups Only<br>
@@ -354,6 +374,6 @@
     </div>
   </footer>
 
-  <script src="./js/main.js" defer></script>
+  <script src="./js/main.min.js" defer></script>
 </body>
 </html>

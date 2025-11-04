@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const navOverlay = document.querySelector('[data-js="nav-overlay"]');
   const body = document.body;
   const desktopQuery = window.matchMedia('(min-width: 48rem)');
+  const reduceMotionQuery = typeof window.matchMedia === 'function'
+    ? window.matchMedia('(prefers-reduced-motion: reduce)')
+    : null;
+  const reduceMotion = reduceMotionQuery ? reduceMotionQuery.matches : false;
   const header = document.querySelector('.site-header');
 
   const syncMenuAria = (isOpen) => {
@@ -85,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentScrollY = window.scrollY;
     const isScrolled = currentScrollY > 16;
     const isScrollingDown = currentScrollY > lastScrollY;
-    const shouldHide = isScrollingDown && currentScrollY > 120;
+    const shouldHide = !reduceMotion && isScrollingDown && currentScrollY > 120;
 
     header.classList.toggle('site-header--scrolled', isScrolled);
     if (shouldHide) {
@@ -113,12 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const animatedElements = Array.from(document.querySelectorAll('[data-animate]'));
   if (animatedElements.length) {
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+            currentObserver.unobserve(entry.target);
           }
         });
       }, {
@@ -277,11 +281,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = contactForm.querySelector('[data-js="form-submit"]');
     const submitDefaultLabel = submitButton?.textContent || 'Submit';
 
+    if (statusElement) {
+      statusElement.hidden = true;
+    }
+
     const setStatus = (type, message) => {
       if (!statusElement) return;
       statusElement.textContent = message;
-      statusElement.dataset.status = type;
       statusElement.classList.remove('form__status--success', 'form__status--error');
+
+      if (!message) {
+        statusElement.hidden = true;
+        statusElement.removeAttribute('data-status');
+        return;
+      }
+
+      statusElement.hidden = false;
+      statusElement.dataset.status = type;
 
       if (type === 'success') {
         statusElement.classList.add('form__status--success');
@@ -297,8 +313,10 @@ document.addEventListener('DOMContentLoaded', () => {
       errorElement.textContent = message;
       if (message) {
         input.setAttribute('aria-invalid', 'true');
+        errorElement.hidden = false;
       } else {
         input.removeAttribute('aria-invalid');
+        errorElement.hidden = true;
       }
     };
 
@@ -322,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     fields.forEach((field) => {
+      setFieldError(field, '');
       const input = field.querySelector('.form__input');
       if (!input) return;
       input.addEventListener('input', () => {
@@ -337,17 +356,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      let hasErrors = false;
+      const invalidFields = fields.filter((field) => validateField(field));
 
-      fields.forEach((field) => {
-        const message = validateField(field);
-        if (message) {
-          hasErrors = true;
-        }
-      });
-
-      if (hasErrors) {
+      if (invalidFields.length) {
         setStatus('error', 'Let’s fix the highlighted fields.');
+        const firstInvalidInput = invalidFields[0].querySelector('.form__input');
+        if (firstInvalidInput) {
+          firstInvalidInput.focus();
+        }
         return;
       }
 
