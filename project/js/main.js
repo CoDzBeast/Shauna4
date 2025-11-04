@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = reduceMotionQuery ? reduceMotionQuery.matches : false;
   const header = document.querySelector('.site-header');
 
+  /**
+   * Keep the navigation menu's aria-hidden attribute in sync with its visual state.
+   * On desktop widths the menu is always visible, so we remove the attribute entirely.
+   *
+   * @param {boolean} isOpen - Whether the mobile navigation is currently expanded.
+   */
   const syncMenuAria = (isOpen) => {
     if (!navMenu) return;
     if (desktopQuery.matches) {
@@ -24,6 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  /**
+   * Toggle the primary navigation drawer and supporting UI affordances.
+   * Accepts an optional boolean to force a particular state (e.g. close on Escape).
+   *
+   * @param {boolean} [forceState]
+   */
   const toggleNav = (forceState) => {
     if (!navMenu || !navToggle) return;
     const isOpen = typeof forceState === 'boolean'
@@ -38,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     syncMenuAria(isOpen);
   };
 
+  /**
+   * Restore the mobile navigation to its default closed state.
+   * Used when the viewport switches to desktop layouts or when closing the overlay.
+   */
   const resetNavState = () => {
     if (!navMenu || !navToggle) return;
     navMenu.classList.remove('site-nav__menu--open');
@@ -61,6 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /**
+   * Keep the navigation accessible when breakpoints change by clearing
+   * residual mobile-only state that could hide the desktop menu.
+   */
   const handleViewportChange = () => {
     if (desktopQuery.matches) {
       resetNavState();
@@ -80,6 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastScrollY = window.scrollY;
   let isTicking = false;
 
+  /**
+   * Apply header styling updates based on scroll position.
+   * Adds a subtle elevation and hides the bar while scrolling down on larger screens.
+   */
   const updateHeaderOnScroll = () => {
     if (!header) {
       isTicking = false;
@@ -115,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateHeaderOnScroll();
 
+  // Intersection Observer powered entrance animations with a reduce-motion fallback.
   const animatedElements = Array.from(document.querySelectorAll('[data-animate]'));
   if (animatedElements.length) {
     if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -136,6 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /**
+   * Progressive enhancement carousel tailored for the testimonials section.
+   * Uses translateX transforms instead of manipulating scroll for smoother performance.
+   */
   class TestimonialsCarousel {
     constructor(root) {
       this.root = root;
@@ -155,6 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.init();
     }
 
+    /**
+     * Initialize DOM references, create pagination dots, bind listeners, and paint the first view.
+     */
     init() {
       if (!this.track || this.slides.length === 0) return;
       this.slidesPerView = this.getSlidesPerView();
@@ -163,15 +195,26 @@ document.addEventListener('DOMContentLoaded', () => {
       this.update();
     }
 
+    /**
+     * Determine how many testimonial slides should be visible per viewport size.
+     *
+     * @returns {number}
+     */
     getSlidesPerView() {
       const matchedBreakpoint = this.breakpoints.find((breakpoint) => window.matchMedia(breakpoint.query).matches);
       return matchedBreakpoint ? matchedBreakpoint.slides : 1;
     }
 
+    /**
+     * Calculate the total number of carousel "pages" based on slides per view.
+     *
+     * @returns {number}
+     */
     getPageCount() {
       return Math.ceil(this.slides.length / this.slidesPerView);
     }
 
+    /** Attach click, resize, and breakpoint listeners for carousel controls. */
     bindEvents() {
       this.prevButton?.addEventListener('click', () => this.move(-1));
       this.nextButton?.addEventListener('click', () => this.move(1));
@@ -192,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    /** Debounce expensive updates so layout recalculations occur in a rAF tick. */
     handleResize() {
       window.requestAnimationFrame(() => {
         this.updateSlidesPerView();
@@ -199,6 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    /**
+     * Refresh slidesPerView when breakpoints change and rebuild pagination if necessary.
+     */
     updateSlidesPerView() {
       const nextValue = this.getSlidesPerView();
       if (nextValue === this.slidesPerView) return;
@@ -207,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.update();
     }
 
+    /** Build accessible pagination dots tied to the current number of pages. */
     createDots() {
       if (!this.dotsWrapper) return;
       const pageCount = this.getPageCount();
@@ -229,6 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    /**
+     * Advance the carousel forward or backward by one page and update the UI.
+     *
+     * @param {number} direction - Typically -1 for previous or 1 for next.
+     */
     move(direction) {
       const pageCount = this.getPageCount();
       if (pageCount <= 1) {
@@ -240,6 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
       this.update();
     }
 
+    /**
+     * Synchronize button disabled states and aria-selected attributes for dots.
+     *
+     * @param {number} pageCount
+     */
     updateControls(pageCount) {
       if (this.prevButton) {
         this.prevButton.disabled = this.currentPage <= 0;
@@ -256,6 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    /**
+     * Core render loop: translate the track to the active page and update controls.
+     */
     update() {
       if (!this.track) return;
       const pageCount = this.getPageCount();
@@ -274,6 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new TestimonialsCarousel(carousel);
   });
 
+  // Enhanced contact form validation and friendly status messaging.
   const contactForm = document.querySelector('[data-js="contact-form"]');
   if (contactForm) {
     const fields = Array.from(contactForm.querySelectorAll('.form__field'));
@@ -285,6 +347,12 @@ document.addEventListener('DOMContentLoaded', () => {
       statusElement.hidden = true;
     }
 
+    /**
+     * Update the form status helper text and styling for success, error, or idle states.
+     *
+     * @param {('success'|'error'|'loading'|'idle')} type
+     * @param {string} message
+     */
     const setStatus = (type, message) => {
       if (!statusElement) return;
       statusElement.textContent = message;
@@ -293,11 +361,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!message) {
         statusElement.hidden = true;
         statusElement.removeAttribute('data-status');
+        if (typeof statusElement.blur === 'function') {
+          statusElement.blur();
+        }
         return;
       }
 
       statusElement.hidden = false;
       statusElement.dataset.status = type;
+      if (typeof statusElement.focus === 'function') {
+        window.requestAnimationFrame(() => {
+          try {
+            statusElement.focus({ preventScroll: true });
+          } catch (error) {
+            statusElement.focus();
+          }
+        });
+      }
 
       if (type === 'success') {
         statusElement.classList.add('form__status--success');
@@ -306,6 +386,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    /**
+     * Display or clear error messaging for an individual form field.
+     *
+     * @param {HTMLElement} field
+     * @param {string} message
+     */
     const setFieldError = (field, message) => {
       const input = field.querySelector('.form__input');
       const errorElement = field.querySelector('[data-js="field-error"]');
@@ -320,6 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    /**
+     * Run client-side validation rules for a given field and return an error message, if any.
+     *
+     * @param {HTMLElement} field
+     * @returns {string}
+     */
     const validateField = (field) => {
       const input = field.querySelector('.form__input');
       if (!input) return '';
