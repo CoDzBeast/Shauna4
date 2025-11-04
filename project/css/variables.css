@@ -2,7 +2,7 @@
   --color-primary: #ffcf70;
   --color-primary-dark: #f2a541;
   --color-secondary: #34263a;
-  --color-accent: #ff7b54;
+  --color-accent: #c94b1e;
   --color-highlight: #ffe8ba;
   --color-background: #fffaf4;
   --color-surface: #ffffff;
@@ -10,6 +10,10 @@
   --color-text: #2b1b2a;
   --color-text-muted: #6c5a68;
   --color-border: rgba(43, 27, 42, 0.12);
+  --color-focus: #4e3274;
+
+  --focus-ring: 0 0 0 3px rgba(78, 50, 116, 0.3);
+  --focus-ring-strong: 0 0 0 4px rgba(201, 75, 30, 0.32);
 
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
@@ -41,6 +45,7 @@
 
   --container-max: 1120px;
   --container-gutter: var(--spacing-3);
+  --container-gutter-tight: var(--spacing-2);
 
   --transition-base: 200ms ease;
   --transition-fast: 120ms ease;
